@@ -2,7 +2,7 @@
 applications:
 - disk_quota: 1024M
   name: kube-demo2
-  domain: stage1.mybluemix.net
+  domain: mybluemix.net
   host: bff-demo2
   memory: 256M
   instances: 1
