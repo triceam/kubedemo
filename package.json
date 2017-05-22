@@ -1,0 +1,26 @@
+{
+  "name": "kube-demo2",
+  "version": "1.0.0",
+  "description": "A generated Bluemix application",
+  "private": true,
+  "engines": {
+    "node": "^6.9.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "debug": "node --nolazy --debug-brk=5858 server.js"
+  },
+  "dependencies": {
+    "cfenv": "^1.0.3",
+    "express": "^4.14.0",
+    "express-session": "^1.15.0",
+    "body-parser": "^1.17.0",
+    "appmetrics-dash": "^3.0.0",
+    "watson-developer-cloud": "^2.15.2",
+    "cloudant": "^1.7.1",
+    "mongodb": "^2.2.22",
+    "redis": "^2.6.5",
+    "bluemix-objectstorage": "*",
+    "bluemix-autoscaling-agent": "*"
+  }
+}
