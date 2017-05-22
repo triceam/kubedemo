@@ -15,18 +15,7 @@ var appEnv = cfenv.getAppEnv();
 // AppMetrics monitoring instrumentation
 require('appmetrics-dash').attach();
 
-// Cloudant instrumentation
-var cloudant = Cloudant(appEnv.services['cloudantNoSQLDB'][0].credentials);
-var cloudantDb = cloudant.db.use("mydb");
 
-// ObjectStorage instrumentation
-var objStorageCredentials = appEnv.services['Object-Storage'][0].credentials
-const objStorage = new ObjectStorage({
-	projectId: objStorageCredentials.projectId,
-	region: objStorageCredentials.region,
-	userId: objStorageCredentials.userId,
-	password: objStorageCredentials.password
-});
 
 // Swagger instrumentation
 app.use("/swagger/api", express.static("./public/swagger.yaml"));
@@ -34,17 +23,17 @@ app.use("/explorer", express.static("./public/swagger-ui"));
 
 // Business logic
 app.get("/products", function(req, res, next){
-	/*
-	Put your business logic here, e.g.
-	cloudantDb.list(function(err, body){
-		if (!err){
-			body.rows.forEach(function(doc){
-				console.log(doc);
-			});
-		}
-	});
-	*/
-	res.json();
+
+	res.json([{
+		"id":0,
+		"name":"IBM"
+	},{
+		"id":1,
+		"name":"Bluemix"
+	},{
+		"id":2,
+		"name":"Watson"
+	}]);
 });
 
 app.post("/products", function(req, res, next){
