@@ -9,10 +9,5 @@ applications:
   timeout: 180
   buildpack: sdk-for-nodejs
   command: npm start
-  services:
-    - watson-visual-recognition-01
-    - watson-speech-to-text-01
-    - Cloudant NoSQL DB-il
-    - Object Storage-35
   env:
     OPENAPI_SPEC: /swagger/api
