@@ -24,7 +24,16 @@ app.use("/explorer", express.static("./public/swagger-ui"));
 // Business logic
 app.get("/products", function(req, res, next){
 
-	res.json([]);
+	res.json([{
+		"id":0,
+		"name":"IBM"
+	},{
+		"id":1,
+		"name":"Bluemix"
+	},{
+		"id":2,
+		"name":"Watson"
+	}]);
 });
 
 app.post("/products", function(req, res, next){
