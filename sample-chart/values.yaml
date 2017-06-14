@@ -1,61 +1,19 @@
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: kube-demo2-secret
-type: Opaque
-data:
+# Default values for kube-demo2-secret.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 3
+revisionHistoryLimit: 1
+image:
+  repository: registry.ng.bluemix.net/andrewtrice/kube-demo-helm
+  tag: latest
+  pullPolicy: IfNotPresent
+service:
+  name: Node
+  type: NodePort
+  containerPort: 8080
+secrets:
   VCAP_APPLICATION: eyJhcHBsaWNhdGlvbl9pZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImFwcGxpY2F0aW9uX25hbWUiOiJrdWJlLWRlbW8yIiwiYXBwbGljYXRpb25fdXJpcyI6WyIiXSwiYXBwbGljYXRpb25fdmVyc2lvbiI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImxpbWl0cyI6eyJkaXNrIjo1MTIsImZkcyI6MTYzODQsIm1lbSI6MTAyNH0sIm5hbWUiOiJrdWJlLWRlbW8yIiwic3BhY2VfaWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzcGFjZV9uYW1lIjoiIiwidXJpcyI6WyIiXSwidXNlcnMiOm51bGwsInZlcnNpb24iOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAifQ==
   VCAP_SERVICES: eyJjbG91ZGFudE5vU1FMREIiOlt7ImNyZWRlbnRpYWxzIjp7InVzZXJuYW1lIjoiYWIzYjQzOTMtMDIyOC00ZjUyLWExMjgtZjQ5ZGIxZGM0YjdiLWJsdWVtaXgiLCJwYXNzd29yZCI6ImM1NjU0OGZjZDRlOTBhMzYxMWViZTcxMzIxMjFjMTA0NDZlY2I5YTFkMTRkNWY1MGU1Y2Y2MzAyN2JlMzAxZWIiLCJob3N0IjoiYWIzYjQzOTMtMDIyOC00ZjUyLWExMjgtZjQ5ZGIxZGM0YjdiLWJsdWVtaXgiLCJwb3J0Ijo0NDMsInVybCI6Imh0dHBzOi8vYWIzYjQzOTMtMDIyOC00ZjUyLWExMjgtZjQ5ZGIxZGM0YjdiLWJsdWVtaXg6YzU2NTQ4ZmNkNGU5MGEzNjExZWJlNzEzMjEyMWMxMDQ0NmVjYjlhMWQxNGQ1ZjUwZTVjZjYzMDI3YmUzMDFlYkBhYjNiNDM5My0wMjI4LTRmNTItYTEyOC1mNDlkYjFkYzRiN2ItYmx1ZW1peC5jbG91ZGFudC5jb20ifSwic3lzbG9nX2RyYWluX3VybCI6bnVsbCwibGFiZWwiOiJjbG91ZGFudE5vU1FMREIiLCJwcm92aWRlciI6bnVsbCwicGxhbiI6IkxpdGUiLCJuYW1lIjoiQ2xvdWRhbnQgTm9TUUwgREItaWwiLCJ0YWdzIjpbImRhdGFfbWFuYWdlbWVudCIsImlibV9jcmVhdGVkIiwibGl0ZSIsImlibV9kZWRpY2F0ZWRfcHVibGljIl19XSwiT2JqZWN0LVN0b3JhZ2UiOlt7ImNyZWRlbnRpYWxzIjp7ImF1dGhfdXJsIjoiaHR0cHM6Ly9pZGVudGl0eS5vcGVuLnNvZnRsYXllci5jb20iLCJwcm9qZWN0Ijoib2JqZWN0X3N0b3JhZ2VfNjdmNzFlNzhfZDI0Zl80ZTc4Xzk1NzRfYzRmMWViNDU1ODYzIiwicHJvamVjdElkIjoiMDk0ZTQ2NDQ3NzkxNGU0YThkYzgxMWE0YjU1ZGZmNzkiLCJyZWdpb24iOiJkYWxsYXMiLCJ1c2VySWQiOiIwNGU0YmJjMGFmYTg0NzQ4YjdhNWNjZGE3NjFlYTQ1ZCIsInVzZXJuYW1lIjoiYWRtaW5fZTNkYTcyNzM4ODc2NGFiZTEyYmQ4Y2RhYWM0YTBlOTEyYmJhMDQyYSIsInBhc3N3b3JkIjoicXVKODcxdjB9TWlFNk9LXyIsImRvbWFpbklkIjoiMmRmNjM3M2M1NDllNDlmODk3M2ZiNmQyMmFiMThjMWEiLCJkb21haW5OYW1lIjoiNjM5MzQ3Iiwicm9sZSI6ImFkbWluIn0sInN5c2xvZ19kcmFpbl91cmwiOm51bGwsImxhYmVsIjoiT2JqZWN0LVN0b3JhZ2UiLCJwcm92aWRlciI6bnVsbCwicGxhbiI6InN0YW5kYXJkIiwibmFtZSI6Ik9iamVjdCBTdG9yYWdlLTM1IiwidGFncyI6WyJzdG9yYWdlIiwiaWJtX3JlbGVhc2UiLCJpYm1fY3JlYXRlZCJdfV19
   WATSON_SPEECH_TO_TEXT: eyJjcmVkZW50aWFscyI6eyJ1cmwiOiJodHRwczovL3N0cmVhbS53YXRzb25wbGF0Zm9ybS5uZXQvc3BlZWNoLXRvLXRleHQvYXBpIiwidXNlcm5hbWUiOiI2YWQxYWY3NS05NzIzLTQ0ZDctYWIxNS0xYjlkYmVmNGMzYmYiLCJwYXNzd29yZCI6IlFlWDNIeThCdWZKdyJ9LCJzeXNsb2dfZHJhaW5fdXJsIjpudWxsLCJsYWJlbCI6InNwZWVjaF90b190ZXh0IiwicHJvdmlkZXIiOm51bGwsInBsYW4iOiJzdGFuZGFyZCIsIm5hbWUiOiJzcGVlY2gtdG8tdGV4dC0wMSJ9
   WATSON_VISUAL_RECOGNITION: eyJjcmVkZW50aWFscyI6eyJ1cmwiOiJodHRwczovL2dhdGV3YXktYS53YXRzb25wbGF0Zm9ybS5uZXQvdmlzdWFsLXJlY29nbml0aW9uL2FwaSIsIm5vdGUiOiJUaGlzIGlzIHlvdXIgcHJldmlvdXMgZnJlZSBrZXkuIElmIHlvdSB3YW50IGEgZGlmZmVyZW50IG9uZSwgcGxlYXNlIHdhaXQgMjQgaG91cnMgYWZ0ZXIgdW5iaW5kaW5nIHRoZSBrZXkgYW5kIHRyeSBhZ2Fpbi4iLCJhcGlfa2V5IjoiZjMwMjA3YzIwNjUzZTA2OGI4NWIwMTRhNmNkNTI3ZTNjNTc4ZTYzOCJ9LCJzeXNsb2dfZHJhaW5fdXJsIjpudWxsLCJsYWJlbCI6IndhdHNvbl92aXNpb25fY29tYmluZWQiLCJwcm92aWRlciI6bnVsbCwicGxhbiI6ImZyZWUiLCJuYW1lIjoidmlzdWFsLXJlY29nbml0aW9uLTAxIiwidGFncyI6WyJ3YXRzb24iLCJpYm1fY3JlYXRlZCIsImlibV9kZWRpY2F0ZWRfcHVibGljIl19
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: kube-demo2-deployment
-spec:
-  replicas: 3
-  revisionHistoryLimit: 1
-  template:
-    metadata:
-      labels:
-        app: kube-demo2
-    spec:
-      containers:
-      - name: kube-demo2
-        image: registry.ng.bluemix.net/antonal/kube-demo-helm:latest
-        env:
-          - name: VCAP_APPLICATION
-            valueFrom:
-              secretKeyRef:
-                name: kube-demo2-secret
-                key: VCAP_APPLICATION
-          - name: VCAP_SERVICES
-            valueFrom:
-              secretKeyRef:
-                name: kube-demo2-secret
-                key: VCAP_SERVICES
-          - name: WATSON_SPEECH_TO_TEXT
-            valueFrom:
-              secretKeyRef:
-                name: kube-demo2-secret
-                key: WATSON_SPEECH_TO_TEXT
-          - name: WATSON_VISUAL_RECOGNITION
-            valueFrom:
-              secretKeyRef:
-                name: kube-demo2-secret
-                key: WATSON_VISUAL_RECOGNITION
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: kube-demo2-service
-spec:
-  type: NodePort
-  ports:
-  - port: 8080
-  selector:
-    app: kube-demo2
+

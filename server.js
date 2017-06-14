@@ -13,7 +13,7 @@ var appEnv = cfenv.getAppEnv();
 
 
 // AppMetrics monitoring instrumentation
-require('appmetrics-dash').attach();
+//require('appmetrics-dash').attach();
 
 
 
